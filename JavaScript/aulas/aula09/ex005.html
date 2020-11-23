@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>primeiros passos com DOM</title>
+    <style>
+        body{
+            background-color: gray;
+            color: chartreuse;
+            font: normal 18 arial;
+        }
+    </style>
+</head>
+<header>
+    <h1>Olá, mundo!</h1>
+</header>
+<body>
+    <h1>Aprendendo DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo <strong>DOM</strong> em javascript</p>
+    <div id="msg">Clique em min</div>
+    <script>
+        var texto = window.prompt("Digite algo >>>") //requisita dado do usuario
+        var p1 = window.document.getElementsByTagName('p')[1] //puxa dados do html
+        var corpo = document.body
+        //document.write(p1.innerText)// puxa so o texto
+        //document.write(p1.innerHTML) //puxa o texto com a formatação em html
+        //var d = document.getElementById(`msg`)
+        //d.style.backgroundColor = "black"
+        //d.style.color = "gray"
+        var d = window.document.querySelector('div#msg')
+        d.style.color = 'blue'
+    </script>
+</body>
+</html>
