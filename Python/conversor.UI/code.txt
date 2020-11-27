@@ -1,0 +1,1 @@
+pyuic5 -x P:\desenvolvimento\python\conversor.UI\SeuArquivo.ui -o P:\desenvolvimento\python\conversor.UI\ArquivoDeSaída.py

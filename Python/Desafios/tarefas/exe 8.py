@@ -1,0 +1,8 @@
+a =(input('digite uma distancia em metros >>'))
+print('{}km'.format(a/1000))
+print('{}hm'.format(a/100))
+print('{}dam'.format(a/10))
+print(a,'m')
+print('{}dm'.format(a*10))
+print('{}cm'.format(a*100))
+print('{}mm'.format(a*100//0))

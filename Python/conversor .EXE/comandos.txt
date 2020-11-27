@@ -1,0 +1,3 @@
+Comando para instalar o cx_freeze: python -m pip install cx_Freeze --upgrade
+
+entre nesse link https://www.youtube.com/watch?v=g9KkqYKFxI8

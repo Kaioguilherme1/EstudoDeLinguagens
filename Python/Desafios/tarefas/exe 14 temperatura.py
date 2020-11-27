@@ -1,0 +1,6 @@
+C = float(input('digite a temperatura em C° >'))
+F = float(((C/5)*9)+32)
+K = float(C + 273)
+print('a temperatura de {}'.format(C,))
+print('tambem e {} F°'.format(F,))
+print('e {} K '.format(K,))

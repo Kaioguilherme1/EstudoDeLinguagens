@@ -1,0 +1,7 @@
+D = int(input('quantos dias vai ficar com o carro >>'))
+K = float(input('distancia percorrida com ele >>'))
+pd = float(60 * D)
+pk = float(0.15 * K)
+print('se o carro roda {} km você vai pagar R$ {}'.format(K, pk))
+print('e se você passar {} dias com ele ira pagar R$ {}'.format(D, pd))
+print('pagando um total de R$',pd + pk)
