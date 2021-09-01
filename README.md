@@ -1,2 +1,2 @@
 # PythonCodigos
- exercicios e codigos do curso de python que fiz
+ exercicios e codigos fontes de todas as linguagens de programação que já aprendi ou irei aprender.
