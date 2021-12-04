@@ -1,45 +1,28 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void ExibirJogo(char JogoDaVelha[3][3]){
+void ExibirJogo(char *ponteiro){
     int x, y;
     for (x = 0; x < 3; x++){
         for (y = 0; y < 3; y++)
-            printf("%c ", JogoDaVelha[x][y]);
+            printf("%c ", *ponteiro);
+        
+        ponteiro++;
         printf("\n");    
         }
 }
 
-void Jogada(char JogoDaVelha[3][3], char *posicao, int jogador){
+void jogada(char *ponteiro, int jogador){
+    int i;
 
-    int x, y;
-    /*for (x = 0; x < 3; x++){
-        for (y = 0; y < 3; y++){
-            if(JogoDaVelha[x][y] == 'x' || JogoDaVelha[x][y] == 'o'){
-                printf("Você jogou onde já foi jogado, jogue novamente");
-            
-                if (icone == 'x'){
-                    printf("\nJogador 1: ");
-                    scanf("%d", &x);
-                    printf(" ");
-                    scanf("%d", &y);
-                    Jogada(JogoDaVelha, posicao, "x");
-                    ExibirJogo(JogoDaVelha);
-                    break;
-                }else{
-                    printf("\nJogador 2: ");
-                    scanf("%d", &x);
-                    printf(" ");
-                    scanf("%d", &y);
-                    Jogada(JogoDaVelha, posicao, "o");
-                    ExibirJogo(JogoDaVelha);
-                    break;
-                }
-                
-            }
-            
-    }*/
-    posicao = "x";
+    if (jogador == 1){
+        ponteiro = "X";
+        printf("%p %c \n\n", ponteiro, *ponteiro);
+    }else{
+        ponteiro = "O";
+    }
+    
+    
 }
 
 int main(void){
@@ -64,21 +47,13 @@ int main(void){
         scanf("%d", &posX);
         printf(" ");
         scanf("%d", &posY);
-        
-        posicao = jogoDaVelha[posX][posY];
 
-        Jogada(jogoDaVelha, posicao, 'x');
-        printf("%c, %p", *posicao, posicao);
-        ExibirJogo(jogoDaVelha);
+        jogada(&jogoDaVelha[posX-1][posY-1], 1);
+        ExibirJogo(&jogoDaVelha[0][0]);
 
-        printf("Jogador 2: ");
-        scanf("%d", &posX);
-        printf(" ");
-        scanf("%d", &posY);
 
-        posicao = &jogoDaVelha[posX][posY];
-        Jogada(jogoDaVelha, posicao, 1);
-        ExibirJogo(jogoDaVelha);
+
+       
 
     }
     return 0;

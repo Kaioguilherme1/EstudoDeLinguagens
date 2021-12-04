@@ -2,20 +2,16 @@
 
 int main()
 {
-    char **ponteiros[5], palavra[69];
-    int i;
-
-    //ponteiros = malloc(5 * sizeof(char *));
-
-    for ( i = 0; i < 5; i++)
+    char strings[5][69];
+    int count;
+    for (count = 0; count < 5; count++)
     {
-        printf("Digite uma palavra >>> ");
-        get(palavra);
-
-
+        printf("\n\nDigite uma string: ");
+        gets(strings[count]);
     }
-    
-
-
+    printf("\n\n\nAs strings que voce digitou foram:\n\n");
+    for (count = 0; count < 5; count++)
+        printf("%s\n", strings[count]);
+    return (0);
     return (0);
 }
