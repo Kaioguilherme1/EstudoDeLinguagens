@@ -1,0 +1,18 @@
+.text
+    li $s0, 5
+
+    #s0 = A
+    # s1 = i
+    # s2 = v
+    # s3 = t
+    # carrega o valor de in
+    add $t0, $s1, $s1
+    add $t0, $t0, $t0
+
+    add $t0, $t0, $s1
+    lw $t1, 0($t0) 
+    lw $t2, 16 ($s0) # busca o valor de A[4]
+    lw $t3, 20($s2) # busca o valor de V[5]
+
+    add $t3, $t1, $t2, 
+    add $s3, $t3, $s0
