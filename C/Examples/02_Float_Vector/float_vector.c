@@ -66,14 +66,15 @@ void set(floatVector *vec, int index, float val){
     vec->data[index] = val;
     
 }
+
 void print(floatVector *vec){
     puts("---------------FloatVector---------------");
     printf("Capacity: %d\n", vec->capacity);
     printf("Size: %d\n", vec->size);
 
+    
     for(int i = 0; i < vec->size; i++){
         printf("%d | %.2f | \n",i ,  vec->data[i]);
-        
     }
     puts(".........................");
 }
