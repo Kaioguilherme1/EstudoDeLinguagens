@@ -4,6 +4,7 @@ public class MainLivro {
     
 
     public static void main(String[] args){
+
         Livro objlivro = new Livro();
 
         objlivro.Autor = "machado de Assis";
@@ -19,6 +20,9 @@ public class MainLivro {
         System.out.println("Isbn: " + objlivro.getIsbn());
         System.out.println("Paginas: " + objlivro.getpaginas());
         System.out.println("Emprestado: " + objlivro.estaEmprestado);
+        
+        
+
         
    }
 }
