@@ -78,3 +78,7 @@ void print(floatVector *vec){
     }
     puts(".........................");
 }
+
+void main(void){
+    
+}
