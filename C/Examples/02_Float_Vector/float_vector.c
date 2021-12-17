@@ -3,15 +3,22 @@
 #include <stdlib.h>
 
 /*------------- Metodos Privados -------------*/
-void isFull(floatVector* vec) {
+void isFull(floatVector* vec, char funcao[]) {
     if (vec->size == vec->capacity)
     {
-        fprintf(stderr, "ERRO in append ()\n");
+        fprintf(stderr, "ERRO in %s ()\n", funcao);
         fprintf(stderr, "vector is full\n");
         exit(EXIT_FAILURE);
     }
 }
 
+void IndexInvalid(floatVector *vec, int index, char funcao[]){
+    if (index >= vec->size || index < 0){
+        fprintf(stderr, "ERRO in %s ()\n", funcao);
+        fprintf(stderr, "Index [&d] is out of bounds: [%d, %d] \n", index, vec->size);
+        exit(EXIT_FAILURE);
+    }
+}
 
 /*------------- Metodos Publicos -------------*/
 floatVector *create(int capacity){
@@ -38,29 +45,20 @@ int capacity(floatVector *vec){
 }
 
 float get(floatVector *vec, int index){
-    if(index >= vec -> size || index < 0){
-        fprintf(stderr, "ERRO in get ()\n");
-        fprintf(stderr, "Index [&d] is out of bounds: [0, %d] \n",index, vec->size);
-        exit(EXIT_FAILURE);
-    }
+    IndexInvalid(vec, index, "get");
     return vec->data[index];
 }
 
 void append(floatVector *vec, float val){
-    isFull(vec);
+    isFull(vec, "append");
 
     vec->data[vec->size++] = val;
     //vec->size++;
 }
 
 void set(floatVector *vec, int index, float val){
-    isFull(vec);
-    
-    if(index >= vec -> size || index < 0){
-        fprintf(stderr, "ERRO in set ()\n");
-        fprintf(stderr, "Index [&d] is out of bounds: [0, %d] \n",index, vec->size);
-        exit(EXIT_FAILURE);
-    }
+    isFull(vec, "set");
+    IndexInvalid(vec, index, "set");
     append(vec, vec->data[index]);
 
     vec->data[index] = val;
@@ -79,6 +77,25 @@ void print(floatVector *vec){
     puts(".........................");
 }
 
-void main(void){
+void Remove(floatVector *vec, int index){
+    IndexInvalid(vec, index, "remove");
+    for(int i = index; i < vec->size; i++){
+        vec->data[i] = vec->data[i+1];
+    }
+    vec->size--;
     
 }
+
+void erase(floatVector *vec){
+    vec->size = 0;
+}
+
+floatVector *clone(floatVector *vec){
+    
+    floatVector *clone = create(vec->capacity);
+    for(int i = 0; i < vec->size; i++){
+        append(clone, vec->data[i]);
+    }
+    return clone;
+}
+
