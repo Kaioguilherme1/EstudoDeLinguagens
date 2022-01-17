@@ -10,6 +10,7 @@ typedef struct _node {
 
 typedef struct _linked_list {
      Node *begin;
+     Node *end;
 
 } LinkedList;
 
@@ -45,6 +46,37 @@ void LinkedList_add_first(LinkedList *L, int val){
     p->next = L->begin;
     L->begin = p;
     
+}
+
+void LinkedList_add_last_slow(LinkedList *L, int val){
+    Node *q = node_create(val);
+    // se a lista estiver vazia
+    if (L->begin == NULL){
+        L->begin = q;
+    }
+    else{
+        Node* p = L->begin;
+        while(p->next != NULL){
+            p = p->next;
+        }
+        p->next = q;
+    }
+}
+
+void LinkedList_add_last(LinkedList *L, int val)
+{
+    Node *q = node_create(val);
+    // se a lista estiver vazia
+    if (L->begin == NULL)
+    {
+        L->begin = q;
+        L->end = q;
+    }
+    else
+    {
+        L->end->next = q;
+        L->end = q;
+    }
 }
 
 void LinkedList_print(LinkedList *L){
