@@ -53,6 +53,7 @@ void LinkedList_add_last_slow(LinkedList *L, int val){
     // se a lista estiver vazia
     if (L->begin == NULL){
         L->begin = q;
+        L->end = q;
     }
     else{
         Node* p = L->begin;
@@ -60,6 +61,7 @@ void LinkedList_add_last_slow(LinkedList *L, int val){
             p = p->next;
         }
         p->next = q;
+        L->end = q;
     }
 }
 
