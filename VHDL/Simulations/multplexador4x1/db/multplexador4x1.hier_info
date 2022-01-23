@@ -1,0 +1,16 @@
+|multplexador4x1
+C0 => S.IN0
+C0 => S.IN0
+C0 => S.IN0
+C0 => S.IN0
+C1 => S.IN1
+C1 => S.IN1
+C1 => S.IN1
+C1 => S.IN1
+A => S.DATAB
+B => S.DATAB
+C => S.DATAB
+D => S.DATAA
+S << S$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+

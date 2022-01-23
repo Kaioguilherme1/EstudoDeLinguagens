@@ -1,0 +1,21 @@
+-- AUTH:KAIO GUILHERME 
+
+entity multplexador4x1 is
+  port (
+    C0, C1, A, B, C, D: in bit;
+    S                 : out bit   
+  ) ;
+end multplexador4x1;
+
+architecture main of multplexador4x1 IS
+begin
+    if(C0 == 0 and C1 == 0) then
+        S <= A;
+    else if(C0 == 0 and C1 == 1) then
+        S <= B;
+    else if(C0 == 1 and C1 == 0) then
+        S <= C;
+    else if(C0 == 1 and C1 == 1) then
+        S <= D;
+    end if;
+end architecture main;

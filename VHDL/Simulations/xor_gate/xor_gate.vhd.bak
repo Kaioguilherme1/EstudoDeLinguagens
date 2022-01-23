@@ -1,0 +1,13 @@
+--kaio Guilherme
+entity xor_gate is
+    port (
+        a : in std_logic;
+        b : in std_logic;
+        c : out std_logic
+    );
+    end entity xor_gate;
+
+    architecture main of xor_gate is
+    begin
+        c <= xor(a, b);
+    end architecture main;
