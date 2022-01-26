@@ -97,56 +97,111 @@ void List_print(List* L) {
     printf("size = %ld\n", L->size);
 }
 
-//remove node passado no parametro
-void Node_remove(Node *p){
-    if(p->prev != NULL){
-        p->prev->next = p->next;
-    }
-    if(p->next != NULL){
-        p->next->prev = p->prev;
-    }
-    free(p);
- }
+//remove node passado no parametro : Modelo antigo
+// void Node_remove(Node *p){
+//     if(p->prev != NULL){
+//         p->prev->next = p->next;
+//     }
+//     if(p->next != NULL){
+//         p->next->prev = p->prev;
+//     }
+//     free(p);
+//  }
+
+//remove da aula
+// void List_remove(List *L, int val) {
+//     if(!List_is_empty(L)){
+//         //caso 1:elemento esta no begin
+//         if(L->begin->val == val){
+//             Node *p = L->begin;
+//             //caso 1.1: = a lista possui 1 elemento
+//             if(L->size == 1){
+//                 L->begin = NULL;
+//                 L->end = NULL;
+//                 free(p);
+//                 L->size--;
+//             }else{
+//             //caso 1.2: = a lista possui mais de 1 elemento
+//                 L->begin = p->next;
+//                 L->begin->prev = NULL;
+//                 free(p);
+//                 L->size--;
+//             }
+//         //caso 2 ou 3: o elemento esta no meio ou no final
+//         }else{
+//             Node *p = L->begin->next;
+//             //realiza a buscar 
+//             while(p != NULL){
+//                 if(p->val == val){
+//                     //caso 3: final
+//                     if(L->end = p){
+//                         p->prev->next = NULL;
+//                         L->end = p->prev;
+//                     //caso 2: meio
+//                     }else{
+//                         p->prev->next = p->next;
+//                         p->next->prev = p->prev;
+                        
+//                     }
+//                     free(p);
+//                     L->size--;
+//                 }else{
+//                     p = p->next;
+//                 }
+                
+//             }           
+//         }
+//     }
+// }
+
+//não consegui implementar de forma satisfatoria
+// void List_remove_all(List *L, int val) {
+//     Node *p = L->begin;
+//     size_t size = L->size;
+    
+//     for(int i = 0; i < (L->size+1); i++) {
+//         p = p->next;
+//         if(p->prev->val == val) {
+//             Node_remove(p->prev);
+//             L->size--;
+//         } 
+//     }
+    
+// }
 
 void List_remove(List *L, int val) {
     Node *p = L->begin;
-    do{
-        p = p->next;
-    }while(p->val != val);
-    Node_remove(p);
-    L->size--;
-}
-
-//falta corrigir 
-void List_remove_all(List *L, int val) {
-    Node *p = L->begin;
-    size_t size = L->size;
-    
-    for(int i = 0; i < (L->size+1); i++) {
-        p = p->next;
-        if(p->prev->val == val) {
-            Node_remove(p->prev);
+    while(p != NULL){
+        if(p->val == val){
+            if(p->val == val){
+                L->begin = p->next;
+                p->next->prev = NULL;
+            }else{
+                p->prev->next = p->prev;
+            }
+            free(p);
             L->size--;
-        } 
+        }
+        p = p->next;
     }
-    
 }
-
 //----TESTE DO CÓDIGO-----
 int main(){
     List *L = create_list();
     List_add_last(L, 1);
     List_add_last(L, 2);
-    List_add_last(L, 1);
-    List_add_last(L, 2);
-    List_add_last(L, 1);
-    List_add_last(L, 2);
-    List_add_last(L, 1);
-    List_add_last(L, 2);
-    List_add_last(L, 1);
-    List_add_last(L, 2);
+    List_add_last(L, 3);
+    List_add_last(L, 4);
+    List_add_last(L, 5);
+    List_add_last(L, 6);
+    List_add_last(L, 7);
+    List_add_last(L, 8);
+    List_add_last(L, 9);
+    List_add_last(L, 10);
 
-    List_remove_all(L, 1);
+    List_print(L);
+    List_remove(L, 1);
+
     List_print(L);
 
     destroy_list(&L);
