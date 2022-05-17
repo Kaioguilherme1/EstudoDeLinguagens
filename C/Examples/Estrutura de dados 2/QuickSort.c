@@ -25,6 +25,6 @@ void quickSort( int arr[], int inicio, int fim  ){
 }
 
 int main(){
-    int arr[] = {20, 30, 50, 12}
+    int arr[] = {20, 30, 50, 12};
     return 1;
 }
