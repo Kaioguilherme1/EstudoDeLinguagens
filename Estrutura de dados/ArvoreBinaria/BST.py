@@ -1,4 +1,4 @@
-# Estrura do nó
+#AUTH Kaio Guilherme
 class Node:
     def __init__(self, key):
         self.value = key
