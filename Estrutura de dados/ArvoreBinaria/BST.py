@@ -40,7 +40,7 @@ def findMin(root):
         return None
     while root.left is not None :
         root = root.left
-    return root.value
+    return root
 
 
 def findMax(root):
@@ -48,7 +48,7 @@ def findMax(root):
         return None
     while root.right is not None:
         root = root.right
-    return root.value
+    return root
     
 
 def find_sum(root):
@@ -67,6 +67,66 @@ def findHeight(root):
     rightH = findHeight(root.right)
     return max(leftH , rightH) + 1
 
+#percurso em level
+import queue
+import re
+q = queue.Queue()
+
+def levelOrder(root):
+    if root is None: return None
+    q.put(root)
+    while not q.empty():
+        current = q.queue[0]
+        print(current.value, end=' ')
+        if current.left is not None: q.put(current.left)
+        if current.right is not None: q.put(current.right)
+        q.get()
+
+# Funçao de remoção
+def deleteNode(root, value):
+  if root is None:
+      return None
+  elif value < root.value:
+    root.left = deleteNode(root.left, value)
+  elif value > root.value:
+    root.right = deleteNode(root.right, value)
+  else:  # Nó foi encontrado
+
+    # Caso 1: Nó folha
+    if root.left and root.right is None:
+      root = None
+
+    # Caso 2: Nó tem um filho
+    elif root.left is None:
+      temp = root
+      root = root.right
+      temp = None
+      return root
+    elif root.right is None:
+      temp = root
+      root = root.left
+      temp = None
+    # Caso 3: Nó tem dois filhos
+    else:
+      minNode = findMin(root.right)
+      root.value = minNode.value
+      root.right = deleteNode(root.right, minNode.value)
+  return root
+
+
+#========================================
+def altura(root):
+    return findHeight(root)
+
+def minimo(root):
+    return findMin(root).value
+
+def maximo(root):
+    return findMax(root).value
+    
+def remocao(root, key):
+    deleteNode(root, key)
+
 root = Node(5)
 root.insert(7)
 root.insert(3)
@@ -80,6 +140,9 @@ root.insert(9)
 print("Soma total: ",find_sum(root))
 
 printTree(root)
-print("min: ",findMin(root))
-print("max: ",findMax(root))
-print("Altura: ", findHeight(root))
+print("========================================")
+remocao(root, 3)
+printTree(root)
+print("min: ",minimo(root))
+print("max: ",maximo(root))
+print("Altura: ", altura(root))
