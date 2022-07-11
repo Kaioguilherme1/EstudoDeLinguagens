@@ -55,6 +55,11 @@ class heap:
     def getArray(self):
         return self.array
 
+    def dequeue(self):
+        return self.array[0]
+        self.array
+
+
 
 
 
