@@ -41,18 +41,26 @@ class heap:
                 self.buildHeap()
                 return True
 
+    #não consegui implementar aquela forma de impresão do beecrowd
     # (<Sub-treap da Esquerda><Rótulo>/<Prioridade><Sub-treap da Direita>)
-    def printHeap(self):
-        print("Teste")
-
-    def getArra (self):
-        return self.array
+    def printHeap(self, i=0):
+        if i < self.size:
+            print("(",end="")
+            self.printHeap(2 * i + 2)
+            print("{}/{}".format(str(self.array[i][0]),str(self.array[i][1])), end="")
+            self.printHeap( 2 * i + 1)
+            print(")",end="")
 
     def printTreeheap(self, level=0, i=0):
         if i < self.size:
             self.printTreeheap(level + 1, 2 * i + 2)
             print(' ' * 4 * level + '-> ' + str(self.array[i]))
             self.printTreeheap(level + 1, 2 * i + 1)
+
+    def getArra (self):
+        return self.array
+
+
 
     
 # Não entendi como e para printar as informações. 
@@ -64,9 +72,13 @@ teste2 = ['a',1,'b',2 ,'c',3, 'd',4, 'e',5, 'f',6 ,'g',7]
 vetor = heap(7)
 
 for case in range(0,(len(teste2)-1), 2):
-    print(case)
     vetor.insert(teste2[case + 1], teste2[case])
 
-
+print(teste2)
+print("\n arvore Heap")
 vetor.printTreeheap()
+print("\n Heap Ordenado")
 print(vetor.getArra())
+print("\n Tentativa de impresão")
+vetor.printHeap()
+print("\n")
