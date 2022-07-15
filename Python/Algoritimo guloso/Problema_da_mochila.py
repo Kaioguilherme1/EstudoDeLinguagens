@@ -1,9 +1,4 @@
 
-from dis import dis
-from inspect import get_annotations
-from operator import ge
-
-
 class item:
     def __init__(self,nome ,valor : int, peso : int):
         self.nome = nome
@@ -48,6 +43,11 @@ class mochila:
     def get_items(self):
         return self.items
 
+def delete_item(item, items):
+    for i in range(len(items)-1):
+        if items[i] == item:
+            items.pop(i)
+
 def print_inventario(nome, items):
     valor_total = 0
     peso_total = 0
@@ -63,17 +63,15 @@ def print_inventario(nome, items):
     print("|=========================================|")
 
 def metodo_guloso(items, mochila):
-    i = 0
     item_mais_caro = items[0]
     for item in items:
         if item.valor > item_mais_caro.valor:
             disponivel = mochila.peso_maximo - mochila.peso
             if item.peso <= disponivel:
                 item_mais_caro = item
-                i += 1
     
-    pegou = mochila.adicionar_Item(item_mais_caro)    
-    items.pop(i)
+    pegou = mochila.adicionar_Item(item_mais_caro)  
+    delete_item(item_mais_caro, items)  
     print("\n**************************************************************************\n")
     print_inventario("loja", items)
     print("++++++++++++++++++++++++++++++++++++++++++++")
