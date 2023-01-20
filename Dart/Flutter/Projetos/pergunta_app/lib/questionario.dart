@@ -6,7 +6,7 @@ class Questionario extends StatelessWidget {
   /// Questionario(Perguntas, selecionador, função resposta)
   final List<Map<String, Object>> perguntas;
   final int perguntaSelecionada;
-  final void Function() responder;
+  final void Function(int) responder;
 
   const Questionario({super.key, 
     required this.perguntas, 
@@ -22,14 +22,10 @@ class Questionario extends StatelessWidget {
 
           children: <Widget>[
             Questao(perguntas[perguntaSelecionada]['texto'].toString()),
-            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][0],
-                Colors.green, responder),
-            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][1],
-                Colors.red, responder),
-            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][2],
-                Colors.blue, responder),
-            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][3],
-                Colors.black, responder)
+            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][0],Colors.green, responder),
+            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][1],Colors.red, responder),
+            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][2],Colors.blue, responder),
+            Resposta(perguntas[perguntaSelecionada].cast()['resposta'][3],Colors.black, responder)
           ],
         );
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Resposta extends StatelessWidget {
-  final String resposta;
+  final Map resposta;
   final Color cor;
-  final void Function() onSelect;
+  final void Function(int) onSelect;
 
   /// Criar o botão de resposta
   const Resposta(this.resposta, this.cor, this.onSelect, {super.key});
@@ -14,12 +14,12 @@ class Resposta extends StatelessWidget {
         width: 300,
         margin: const EdgeInsets.symmetric(vertical: 10),
         child: ElevatedButton(
-          onPressed: onSelect,
+          onPressed: () => onSelect(resposta['pontuacao']),
           style: ElevatedButton.styleFrom(
             backgroundColor: cor,
             padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
           ),
-          child: Text(resposta),
+          child: Text(resposta['texto']),
         ));
   }
 }
