@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Resposta extends StatelessWidget {
+
+class Resposta extends StatelessWidget {      
   final Map resposta;
   final Color cor;
   final void Function(int) onSelect;
